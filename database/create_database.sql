@@ -39,9 +39,8 @@ CREATE TABLE reservations (
 CREATE TABLE vehicles (
     vehicle_id INT PRIMARY KEY AUTO_INCREMENT,
     vehicle_name VARCHAR(100) NOT NULL,
-    modele VARCHAR(100) NOT NULL,
+    model VARCHAR(100) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
-    availability BOOLEAN DEFAULT true,
     category_id INT,
     reservation_id INT UNIQUE,
     FOREIGN KEY (category_id) REFERENCES categories(category_id),
@@ -70,3 +69,7 @@ INSERT INTO categories (category_name) VALUES
 ('Sports'),
 ('SUV'),
 ('Electric');
+
+ALTER TABLE reservations
+ADD COLUMN pickup_location VARCHAR(255) NOT NULL AFTER location,
+ADD COLUMN return_location VARCHAR(255) NOT NULL AFTER pickup_location;

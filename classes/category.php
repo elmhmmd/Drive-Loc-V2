@@ -11,8 +11,8 @@ class Category {
 
     public function filterByCategory($category_id) {
         $query = "SELECT v.* FROM vehicles v 
-                 JOIN vehicle_categories vc ON v.vehicle_id = vc.vehicle_id 
-                 WHERE vc.category_id = ?";
+                 JOIN categories c ON v.category_id = c.category_id 
+                 WHERE c.category_id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$category_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -5,6 +5,8 @@ class Reservation {
     private $from_date;
     private $to_date;
     private $location;
+    private $pickup_location;
+    private $return_location;
     private $client_id;
     private $vehicle_id;
     private $db;
@@ -14,20 +16,22 @@ class Reservation {
     }
 
     public function RentVehicle($data) {
-        $query = "INSERT INTO reservations (from_date, to_date, location, client_id, vehicle_id) 
-                 VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO reservations (from_date, to_date, location, pickup_location, return_location, client_id, vehicle_id) 
+                 VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         return $stmt->execute([
             $data['from_date'],
             $data['to_date'],
             $data['location'],
+            $data['pickup_location'],
+            $data['return_location'],
             $data['client_id'],
             $data['vehicle_id']
         ]);
     }
 
     public function ViewReservations($client_id = null) {
-        $query = "SELECT r.*, v.vehicle_name 
+        $query = "SELECT r.*, v.vehicle_name, r.pickup_location, r.return_location 
                  FROM reservations r 
                  JOIN vehicles v ON r.vehicle_id = v.vehicle_id";
         

@@ -52,27 +52,14 @@
                     <div class="w-3 h-12 bg-red-600"></div>
                     <span class="text-2xl font-bold tracking-wider">Drive & Loc</span>
                 </div>
-                <div class="hidden md:flex items-center gap-12 text-sm tracking-widest">
-                    <a href="#" class="relative group">
-                        <span class="hover:text-red-500 transition-colors">EXPLORE</span>
-                        <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-red-500 transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="#" class="relative group">
-                        <span class="hover:text-red-500 transition-colors">VEHICLES</span>
-                        <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-red-500 transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="#" class="relative group">
-                        <span class="hover:text-red-500 transition-colors">EXPERIENCE</span>
-                        <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-red-500 transition-all group-hover:w-full"></span>
-                    </a>
-                </div>
+
                 <div class="flex items-center gap-8">
                     <button class="text-sm tracking-widest hover:text-red-500 transition-colors font-medium">
-                        LOGIN
+                        <a href="./login.php">LOG IN</a>
                     </button>
                     <button class="diagonal-border px-8 py-3 text-sm tracking-widest hover:opacity-90 transition-opacity">
-                        REGISTER
-                    </button>
+                        <a href="./signup.php"> REGISTER </a>
+                    </button>  
                 </div>
             </div>
         </div>
@@ -131,7 +118,7 @@
                 <div class="hover-grow p-8 bg-black rounded-lg md:translate-y-8">
                     <div class="w-16 h-16 mb-6 relative">
                         <div class="absolute inset-0 bg-red-500/20 rounded-full blur-md"></div>
-                        <img src="../assets/images/car-solid.svg" alt="" class="absolute inset-0 w-full h-full object-cover">                    </div>
+                        <img src="../assets/icons/car-solid.svg" alt="" class="absolute inset-0 w-full h-full object-cover">                    </div>
                     <h3 class="text-xl font-bold mb-4">Diverse Collection</h3>
                     <p class="text-gray-400">A wide collection covering every appetite from luxury to sports cars</p>
                 </div>

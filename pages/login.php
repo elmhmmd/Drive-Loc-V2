@@ -43,7 +43,23 @@
         <div class="max-w-md mx-auto">
             <h2 class="text-4xl font-bold mb-8">Welcome Back</h2>
             
-            <form action="process_login.php" method="POST" class="space-y-6">
+            <?php
+            session_start();
+            if (isset($_SESSION['success'])) {
+                echo '<div class="bg-green-500/10 border border-green-500 text-green-500 px-4 py-3 rounded-lg mb-6">' . 
+                     htmlspecialchars($_SESSION['success']) . 
+                     '</div>';
+                unset($_SESSION['success']);
+            }
+            if (isset($_SESSION['error'])) {
+                echo '<div class="bg-red-500/10 border border-red-500 text-red-500 px-4 py-3 rounded-lg mb-6">' . 
+                     htmlspecialchars($_SESSION['error']) . 
+                     '</div>';
+                unset($_SESSION['error']);
+            }
+            ?>
+            
+            <form action="../controllers/process_login.php" method="POST" class="space-y-6">
                 <div>
                     <label class="block text-sm font-medium mb-2">Email</label>
                     <input type="email" name="email" required 
@@ -58,14 +74,6 @@
                            class="w-full px-4 py-4 bg-neutral-800 border-2 border-neutral-700 rounded-lg 
                                   focus:outline-none focus:border-red-500 transition-colors
                                   text-lg placeholder-neutral-400">
-                </div>
-
-                <div class="flex items-center justify-between">
-                    <label class="flex items-center">
-                        <input type="checkbox" class="w-4 h-4 bg-neutral-900 border-neutral-800 text-red-500 focus:ring-red-500">
-                        <span class="ml-2 text-sm text-neutral-400">Remember me</span>
-                    </label>
-                    <a href="#" class="text-sm text-red-500 hover:text-red-400 transition-colors">Forgot Password?</a>
                 </div>
 
                 <button type="submit" 

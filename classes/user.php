@@ -32,13 +32,13 @@ class User {
     }
 
     public function Login($email, $password) {
-        $query = "SELECT * FROM users WHERE email = ?";
+        $query = "SELECT user_id, password, role_id FROM users WHERE email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['role_id'] = $user['role_id'];
             return true;
         }
@@ -51,7 +51,7 @@ class User {
         $stmt->execute([$email]);
         return $stmt->fetchColumn() > 0;
     }
-
+/*
     public function getUserById($id) {
         $query = "SELECT id, username, email, role_id FROM users WHERE id = ?";
         $stmt = $this->db->prepare($query);
@@ -68,4 +68,5 @@ class User {
             $id
         ]);
     }
+    */
 }

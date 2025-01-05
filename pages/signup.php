@@ -43,9 +43,9 @@
         <div class="max-w-md mx-auto">
             <h2 class="text-4xl font-bold mb-8">Create Account</h2>
             
-            <form action="process_signup.php" method="POST" class="space-y-6">
+            <form action="../controllers/process_signup.php" method="POST" class="space-y-6">
                 <div>
-                    <label class="block text-sm font-medium mb-2">Full Name</label>
+                    <label class="block text-sm font-medium mb-2">Username</label>
                     <input type="text" name="fullname" required 
                            class="w-full px-4 py-4 bg-neutral-800 border-2 border-neutral-700 rounded-lg 
                                   focus:outline-none focus:border-red-500 transition-colors

@@ -8,6 +8,8 @@ class Role {
     public function __construct() {
         $this->db = Database::getInstance()->getConnection();
     }
+}
+    /*
 
     public function createRole($role_name) {
         $query = "INSERT INTO roles (role_name) VALUES (?)";
@@ -49,3 +51,4 @@ class Role {
         return $stmt->fetchColumn() > 0;
     }
 }
+    */
