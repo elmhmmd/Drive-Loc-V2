@@ -5,17 +5,19 @@ class Review {
     private $user_id;
     private $content;
     private $db;
+    private $rating;
 
     public function __construct() {
         $this->db = Database::getInstance()->getConnection();
     }
 
     public function addReview($data) {
-        $query = "INSERT INTO reviews (user_id, content) VALUES (?, ?)";
+        $query = "INSERT INTO reviews (user_id, content, rating) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
         return $stmt->execute([
             $data['user_id'],
-            $data['content']
+            $data['content'],
+            $data['rating']
         ]);
     }
 
@@ -28,7 +30,7 @@ class Review {
     public function viewReview($user_id = null) {
         $query = "SELECT r.*, u.username 
                  FROM reviews r 
-                 JOIN users u ON r.user_id = u.id";
+                 JOIN users u ON r.user_id = u.user_id";
         
         if ($user_id) {
             $query .= " WHERE r.user_id = ?";
@@ -42,9 +44,14 @@ class Review {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function modifyReview($id, $content) {
-        $query = "UPDATE reviews SET content = ? WHERE review_id = ?";
+    public function modifyReview($id, $content, $rating) {
+        $query = "UPDATE reviews SET content = ?, rating = ? WHERE review_id = ?";
         $stmt = $this->db->prepare($query);
-        return $stmt->execute([$content, $id]);
+        return $stmt->execute([$content, $rating, $id]);
     }
+
+
+    /*private function validateRating($rating) {
+        return is_numeric($rating) && $rating >= 1 && $rating <= 5;
+    }*/
 }

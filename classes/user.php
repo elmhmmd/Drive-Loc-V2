@@ -51,6 +51,11 @@ class User {
         $stmt->execute([$email]);
         return $stmt->fetchColumn() > 0;
     }
+
+    public function getAllUsers() {
+        $query = "SELECT user_id, username, email FROM users WHERE role_id = 2"; // Assuming role_id 2 is for clients
+        return $this->db->prepare($query);
+    }
 /*
     public function getUserById($id) {
         $query = "SELECT id, username, email, role_id FROM users WHERE id = ?";
