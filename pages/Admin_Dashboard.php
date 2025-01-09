@@ -12,7 +12,7 @@ $vehicleObj = new Vehicle();
 $reservationObj = new Reservation();
 $reviewObj = new Review();
 $categoryObj = new Category();
-$userObj = new User();
+$userObj = new User();  
 // Fetch data for dashboard
 $vehicles = $vehicleObj->ShowVehicles();
 $reservations = $reservationObj->ViewReservations();
